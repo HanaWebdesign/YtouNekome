@@ -1,0 +1,330 @@
+/* ========== 全体リセット ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Yu Gothic', sans-serif;
+  background: #fff;
+  color: #222;
+  overflow-x: hidden;
+}
+
+/* ========== ヘッダー ========== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #cf7d8f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  z-index: 1000;
+}
+.header-logo {
+  height: 40px;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+/* ========== ヒーローエリア ========== */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px;
+  overflow: hidden;
+}
+
+.hero-logo {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  max-width: 300px;
+  opacity: 0;
+  animation: fadeInUp 1.2s ease-out forwards;
+  animation-delay: 0.3s;
+  z-index: 3;
+}
+
+.nekome {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-height: 70vh;
+  animation: floatCat 4s ease-in-out infinite;
+  z-index: 2;
+}
+
+.cat-shadow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  opacity: 0.5;
+  animation: floatShadow 4s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+@keyframes floatCat {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+@keyframes floatShadow {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-4px);
+  }
+}
+
+/* ========== セクション共通 ========== */
+section {
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.profile-wrapper {
+  position: relative;
+  max-width: 960px;
+  margin: 100px auto;
+  padding: 60px; /* ← 余白を多めにとって、枠の中に収める */
+  box-sizing: border-box;
+  z-index: 0;
+}
+
+.frame-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 3; /* ←前面にする */
+}
+
+
+.profile-section {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 60px;
+  z-index: 1;
+  border-radius: 20px;
+  /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); ← これ削除 */
+  box-shadow: none; /* ← これを代わりに */
+}
+
+/* タイトル */
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* プロフィールの中身 */
+.profile-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* テキスト */
+.profile-text {
+  flex: 1;
+  min-width: 280px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #222;
+  text-align: left;
+}
+
+.profile-text h3 {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.profile-text .roman {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.profile-text ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.profile-text li {
+  margin-bottom: 10px;
+}
+
+/* 画像 */
+.profile-img img {
+  width: 250px;
+  height: auto;
+}
+
+
+/* ========== フッター ========== */
+footer {
+  background-color: #cf7d8f;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.video-wrapper {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  aspect-ratio: 16 / 9;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+}
+
+.black-box {
+  background-color: #000;
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+/* 共通：ハンバーガーボタン */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+}
+.menu-toggle .bar {
+  height: 4px;
+  background: black;
+  border-radius: 2px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+
+/* ナビメニュー */
+.nav-menu {
+  display: flex;
+}
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    width: 200px;
+    padding: 10px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  .nav-menu.active {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+    nav ul {
+    flex-direction: row;  /* ← 横並びにする！ */
+    flex-wrap: wrap;      /* ← はみ出すと折り返す */
+    gap: 10px;
+    justify-content: center; /* ← 中央寄せ（任意） */
+    width: calc(100% - 40px);  /* 画面幅に合わせる（左右20pxの余白） */
+  right: 20px;               /* 左右バランスをとる */
+  left: 20px;
+  top: 60px;
+  padding: 10px;
+  gap: 15px;                 /* ボタンの間隔 */
+  z-index: 1000;
+}
+
+  .frame-decoration {
+    display: none;
+  }
+
+.nav-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  width: 220px; /* ★ここを広げてみよう（元は150pxくらいかも） */
+  z-index: 1000;
+}
+
+.nav-menu ul li {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.nav-menu ul li a {
+  display: block;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+
+}
