@@ -23,9 +23,13 @@ header {
   padding: 10px 30px;
   z-index: 1000;
 }
-.header-logo {
-  height: 40px;
+
+.site-title img {
+  height: 40px; /* ← ロゴ画像の高さ（調整可） */
+  width: auto;
+  display: block;
 }
+
 nav ul {
   display: flex;
   list-style: none;
@@ -115,6 +119,8 @@ h2 {
   font-size: 24px;
   margin-bottom: 20px;
 }
+
+
 
 .profile-wrapper {
   position: relative;
@@ -223,6 +229,8 @@ footer {
   border-radius: 10px;
 }
 
+
+
 .black-box {
   background-color: #000;
   color: #fff;
@@ -234,7 +242,7 @@ footer {
   font-size: 18px;
 }
 
-/* 共通：ハンバーガーボタン */
+/* 共通：ハンバーガー */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -252,92 +260,141 @@ footer {
   border-radius: 2px;
 }
 
+/* メニュー */
+.nav-menu {
+  display: flex;
+}
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+.nav-menu li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+/* モバイル用 */
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 1000;
+  }
+
+  .nav-menu.active {
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-menu ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+
+    /* ←ここで縦書き解除 */
+    writing-mode: horizontal-tb !important;
+  }
+
+  .nav-menu li a {
+    display: block;
+    padding: 10px;
+    font-weight: bold;
+  }
+}
+
+
 ul {
   list-style: none;
   padding-left: 0;
 }
-
+.menu-toggle {
+  display: none;
+}
 
 /* ナビメニュー */
 .nav-menu {
   display: flex;
 }
 @media screen and (max-width: 768px) {
+
+  /* ハンバーガーアイコン */
   .menu-toggle {
     display: flex;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
   }
 
+  .menu-toggle .bar {
+    height: 4px;
+    background: black;
+    border-radius: 2px;
+  }
+
+  /* ナビゲーションメニュー */
   .nav-menu {
     display: none;
-    flex-direction: column;
+    flex-direction: column; /* ← ここで縦に並べる */
     position: absolute;
     top: 60px;
-    right: 20px;
-    background-color: white;
+    right: 10px;
+    background-color: #fff;
     border: 1px solid #ccc;
-    width: 220px;
+    width: 200px;
     padding: 10px;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 999;
   }
 
   .nav-menu.active {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
   }
 
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-    padding: 10px;
-    width: 100%;
-  }
-
-  .nav-menu ul li {
+  .nav-menu li {
     margin: 10px 0;
+  }
+
+  .nav-menu li a {
+    display: block;
+    font-weight: bold;
     text-align: center;
   }
 
-  .nav-menu ul li a {
-    display: block;
-    padding: 10px 20px;
-    font-weight: bold;
-  }
-
-  .frame-decoration,
-  .cat-shadow {
-    display: none;
-  }
-
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: auto;
-    padding-top: 80px;
-    padding-bottom: 30px;
-  }
-
-  .hero-logo {
-    position: static;
-    width: 70%;
-    max-width: 250px;
-    margin-bottom: 10px;
-  }
+  /* その他調整（ロゴや画像など） */
+.hero-logo {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  max-width: 300px;
+  opacity: 1 !important;
+  z-index: 9999;
+}
 
   .nekome {
-    position: static;
-    width: 80%;
-    max-width: 300px;
+    max-height: 50vh;
     bottom: 0;
+  }
+
+  /* プロフィール装飾やレイアウト調整 */
+  .frame-decoration {
+    display: none;
   }
 
   .profile-wrapper {
@@ -347,6 +404,8 @@ ul {
 
   .profile-section {
     padding: 30px 20px;
+    box-shadow: none;
+    border-radius: 0;
   }
 
   .profile-content {
@@ -359,14 +418,6 @@ ul {
     text-align: center;
   }
 
-  .profile-text h3 {
-    font-size: 22px;
-  }
-
-  .profile-text .roman {
-    font-size: 16px;
-  }
-
   .profile-img img {
     width: 200px;
   }
@@ -374,7 +425,6 @@ ul {
   h2.section-title {
     font-size: 20px;
     margin-bottom: 20px;
-    white-space: nowrap;
   }
 
   .video-wrapper {
@@ -387,4 +437,3 @@ ul {
   }
 }
 
-}
